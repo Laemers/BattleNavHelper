@@ -123,7 +123,7 @@ namespace BattleNavHelper
         private void Chat(object sender, EventArgs e)
         {
             string msg = String.Format("I hit them {0} times ({1}% dmg) and shot {2} times ({3}% accuracy) and they hit us {4} times ({5}% dmg) and shot {6} times ({7}% accuracy)",
-            Convert.ToString(hit_me), Convert.ToString(Math.Round(100*hit_me/our_max_goal,2)), Convert.ToString(shot_me),Convert.ToString(Math.Round(100*hit_me/shot_me,2)),Convert.ToString(hit_them),Convert.ToString(Math.Round(100*hit_them/their_max_goal,2)),Convert.ToString(shot_them),Convert.ToString(Math.Round(100*hit_them/shot_them,2)));
+            Convert.ToString(hit_me), Convert.ToString(Math.Round(100*hit_me/our_max_goal,0)), Convert.ToString(shot_me),Convert.ToString(Math.Round(100*hit_me/shot_me,0)),Convert.ToString(hit_them),Convert.ToString(Math.Round(100*hit_them/their_max_goal,0)),Convert.ToString(shot_them),Convert.ToString(Math.Round(100*hit_them/shot_them,0)));
             Clipboard.SetText(msg);
         }
     }
