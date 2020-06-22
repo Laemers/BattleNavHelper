@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,6 +60,16 @@ namespace BattleNavHelper
         {
             shot_them += 1;
             textBox7.Text =  Convert.ToString(shot_them);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(2);
+        }
+
+        private void ShipUs_DropDownClosed(object sender, EventArgs e)
+        {
+            //TODO:
         }
     }
 }
