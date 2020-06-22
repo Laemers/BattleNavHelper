@@ -39,13 +39,14 @@ namespace BattleNavHelper
         }
 
         public string Name { get; private set; }
-        public string Category { get; private set; }
+        public string Cannon_Size { get; private set; }
         public double Max_Small { get; private set; }
         public double Max_Medium { get; private set; }
         public double Max_Large { get; private set; }
 
 
-        Ship(string name, string category, double max_small, double max_medium, double max_large) =>
-            (Name, Category, Max_Small, Max_Medium, Max_Large) = (name, category, max_small, max_medium, max_large);
+        Ship(string name, string cannon_size, double max_small, double max_medium, double max_large) =>
+            (Name, Cannon_Size, Max_Small, Max_Medium, Max_Large) =
+            (name, cannon_size, max_small, max_medium, max_large);
     }
 }

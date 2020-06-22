@@ -18,3 +18,13 @@ C:\Users\klaem\Documents\GitHub\BattleNavHelper\BattleNavHelper\obj\Debug\Battle
 C:\Users\klaem\Documents\GitHub\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.csproj.CoreCompileInputs.cache
 C:\Users\klaem\Documents\GitHub\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.exe
 C:\Users\klaem\Documents\GitHub\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.pdb
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\bin\Debug\BattleNavHelper.exe.config
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\bin\Debug\BattleNavHelper.exe
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\bin\Debug\BattleNavHelper.pdb
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.csprojAssemblyReference.cache
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.Form1.resources
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.Properties.Resources.resources
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.csproj.GenerateResource.cache
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.csproj.CoreCompileInputs.cache
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.exe
+C:\Users\hehes\rider\BattleNavHelper\BattleNavHelper\obj\Debug\BattleNavHelper.pdb

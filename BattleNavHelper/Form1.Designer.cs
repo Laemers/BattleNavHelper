@@ -1,4 +1,7 @@
-﻿namespace BattleNavHelper
+﻿using System;
+using System.Diagnostics;
+
+namespace BattleNavHelper
 {
     partial class Form1
     {
@@ -245,7 +248,7 @@
             this.ShipUs.Name = "ShipUs";
             this.ShipUs.Size = new System.Drawing.Size(98, 21);
             this.ShipUs.TabIndex = 4;
-            this.ShipUs.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ShipUs.SelectedIndexChanged += new System.EventHandler(this.ShipUs_SelectedIndexChanged);
             this.ShipUs.DropDownClosed += new System.EventHandler(this.ShipUs_DropDownClosed);
             // 
             // label7
