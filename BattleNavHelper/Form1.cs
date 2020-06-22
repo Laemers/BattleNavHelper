@@ -126,5 +126,15 @@ namespace BattleNavHelper
             Convert.ToString(hit_me), Convert.ToString(Math.Round(100*hit_me/our_max_goal,0)), Convert.ToString(shot_me),Convert.ToString(Math.Round(100*hit_me/shot_me,0)),Convert.ToString(hit_them),Convert.ToString(Math.Round(100*hit_them/their_max_goal,0)),Convert.ToString(shot_them),Convert.ToString(Math.Round(100*hit_them/shot_them,0)));
             Clipboard.SetText(msg);
         }
+
+        private void RockMe_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void RockThem_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
