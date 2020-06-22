@@ -32,15 +32,15 @@ namespace BattleNavHelper
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.WeHitThemAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TheyHitUsAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.PercentageHit = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ShipThem = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,22 +54,22 @@ namespace BattleNavHelper
             this.ShipUs = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TheirMaxGoal = new System.Windows.Forms.TextBox();
+            this.OurMaxGoal = new System.Windows.Forms.TextBox();
+            this.WeShotTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.TheyShotTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.debuggeroutput = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // WeHitThemAmount
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 205);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(27, 20);
-            this.textBox1.TabIndex = 5;
+            this.WeHitThemAmount.Location = new System.Drawing.Point(83, 205);
+            this.WeHitThemAmount.Name = "WeHitThemAmount";
+            this.WeHitThemAmount.Size = new System.Drawing.Size(27, 20);
+            this.WeHitThemAmount.TabIndex = 5;
             // 
             // label3
             // 
@@ -87,12 +87,12 @@ namespace BattleNavHelper
             this.label4.TabIndex = 8;
             this.label4.Text = "Hits on us";
             // 
-            // textBox2
+            // TheyHitUsAmount
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 231);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(27, 20);
-            this.textBox2.TabIndex = 7;
+            this.TheyHitUsAmount.Location = new System.Drawing.Point(83, 231);
+            this.TheyHitUsAmount.Name = "TheyHitUsAmount";
+            this.TheyHitUsAmount.Size = new System.Drawing.Size(27, 20);
+            this.TheyHitUsAmount.TabIndex = 7;
             // 
             // label6
             // 
@@ -102,12 +102,12 @@ namespace BattleNavHelper
             this.label6.TabIndex = 12;
             this.label6.Text = "Percentage";
             // 
-            // textBox4
+            // PercentageHit
             // 
-            this.textBox4.Location = new System.Drawing.Point(83, 257);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(52, 20);
-            this.textBox4.TabIndex = 11;
+            this.PercentageHit.Location = new System.Drawing.Point(83, 257);
+            this.PercentageHit.Name = "PercentageHit";
+            this.PercentageHit.Size = new System.Drawing.Size(52, 20);
+            this.PercentageHit.TabIndex = 11;
             // 
             // button1
             // 
@@ -117,6 +117,7 @@ namespace BattleNavHelper
             this.button1.TabIndex = 13;
             this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ResetButton);
             // 
             // button2
             // 
@@ -126,15 +127,17 @@ namespace BattleNavHelper
             this.button2.TabIndex = 14;
             this.button2.Text = "Chat";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Chat);
             // 
-            // comboBox2
+            // ShipThem
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {"Sloop", "Cutter", "Dhow", "Fanchuan", "Longship", "Baghlah", "Junk", "Merchant brig", "War brig", "Merchant galleon", "War galleon", "Xebec", "War frigate", "Grand frigate"});
-            this.comboBox2.Location = new System.Drawing.Point(101, 42);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 2;
+            this.ShipThem.FormattingEnabled = true;
+            this.ShipThem.Items.AddRange(new object[] {"Sloop", "Cutter", "Dhow", "Fanchuan", "Longship", "Baghlah", "Junk", "Merchant brig", "War brig", "Merchant galleon", "War galleon", "Xebec", "War frigate", "Grand frigate"});
+            this.ShipThem.Location = new System.Drawing.Point(101, 42);
+            this.ShipThem.Name = "ShipThem";
+            this.ShipThem.Size = new System.Drawing.Size(100, 21);
+            this.ShipThem.TabIndex = 2;
+            this.ShipThem.SelectedIndexChanged += new System.EventHandler(this.ShipThem_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -164,7 +167,7 @@ namespace BattleNavHelper
             this.groupBox1.Controls.Add(this.ShipUs);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.ShipThem);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(201, 186);
@@ -180,7 +183,7 @@ namespace BattleNavHelper
             this.button9.TabIndex = 11;
             this.button9.Text = "Missed";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.TheyMissedUs);
             // 
             // button8
             // 
@@ -190,7 +193,7 @@ namespace BattleNavHelper
             this.button8.TabIndex = 10;
             this.button8.Text = "Missed";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.WeMissedThem);
             // 
             // button7
             // 
@@ -209,7 +212,7 @@ namespace BattleNavHelper
             this.button6.TabIndex = 8;
             this.button6.Text = "Hit";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.TheyHitUs);
             // 
             // button5
             // 
@@ -237,7 +240,7 @@ namespace BattleNavHelper
             this.hit_me_button.TabIndex = 5;
             this.hit_me_button.Text = "Hit";
             this.hit_me_button.UseVisualStyleBackColor = true;
-            this.hit_me_button.Click += new System.EventHandler(this.button3_Click);
+            this.hit_me_button.Click += new System.EventHandler(this.WeHitThem);
             // 
             // ShipUs
             // 
@@ -249,7 +252,6 @@ namespace BattleNavHelper
             this.ShipUs.Size = new System.Drawing.Size(98, 21);
             this.ShipUs.TabIndex = 4;
             this.ShipUs.SelectedIndexChanged += new System.EventHandler(this.ShipUs_SelectedIndexChanged);
-            this.ShipUs.DropDownClosed += new System.EventHandler(this.ShipUs_DropDownClosed);
             // 
             // label7
             // 
@@ -267,26 +269,26 @@ namespace BattleNavHelper
             this.label8.TabIndex = 16;
             this.label8.Text = "/";
             // 
-            // textBox5
+            // TheirMaxGoal
             // 
-            this.textBox5.Location = new System.Drawing.Point(130, 231);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(27, 20);
-            this.textBox5.TabIndex = 18;
+            this.TheirMaxGoal.Location = new System.Drawing.Point(130, 231);
+            this.TheirMaxGoal.Name = "TheirMaxGoal";
+            this.TheirMaxGoal.Size = new System.Drawing.Size(27, 20);
+            this.TheirMaxGoal.TabIndex = 18;
             // 
-            // textBox6
+            // OurMaxGoal
             // 
-            this.textBox6.Location = new System.Drawing.Point(130, 205);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(27, 20);
-            this.textBox6.TabIndex = 17;
+            this.OurMaxGoal.Location = new System.Drawing.Point(130, 205);
+            this.OurMaxGoal.Name = "OurMaxGoal";
+            this.OurMaxGoal.Size = new System.Drawing.Size(27, 20);
+            this.OurMaxGoal.TabIndex = 17;
             // 
-            // textBox3
+            // WeShotTotal
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 205);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(27, 20);
-            this.textBox3.TabIndex = 20;
+            this.WeShotTotal.Location = new System.Drawing.Point(179, 205);
+            this.WeShotTotal.Name = "WeShotTotal";
+            this.WeShotTotal.Size = new System.Drawing.Size(27, 20);
+            this.WeShotTotal.TabIndex = 20;
             // 
             // label5
             // 
@@ -296,12 +298,12 @@ namespace BattleNavHelper
             this.label5.TabIndex = 19;
             this.label5.Text = "/";
             // 
-            // textBox7
+            // TheyShotTotal
             // 
-            this.textBox7.Location = new System.Drawing.Point(179, 231);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(27, 20);
-            this.textBox7.TabIndex = 22;
+            this.TheyShotTotal.Location = new System.Drawing.Point(179, 231);
+            this.TheyShotTotal.Name = "TheyShotTotal";
+            this.TheyShotTotal.Size = new System.Drawing.Size(27, 20);
+            this.TheyShotTotal.TabIndex = 22;
             // 
             // label9
             // 
@@ -324,22 +326,22 @@ namespace BattleNavHelper
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(218, 368);
             this.Controls.Add(this.debuggeroutput);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.TheyShotTotal);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.WeShotTotal);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.TheirMaxGoal);
+            this.Controls.Add(this.OurMaxGoal);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.PercentageHit);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.TheyHitUsAmount);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.WeHitThemAmount);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -356,7 +358,6 @@ namespace BattleNavHelper
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox debuggeroutput;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button hit_me_button;
@@ -369,14 +370,15 @@ namespace BattleNavHelper
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox OurMaxGoal;
+        private System.Windows.Forms.TextBox PercentageHit;
+        private System.Windows.Forms.ComboBox ShipThem;
         private System.Windows.Forms.ComboBox ShipUs;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox TheirMaxGoal;
+        private System.Windows.Forms.TextBox TheyHitUsAmount;
+        private System.Windows.Forms.TextBox TheyShotTotal;
+        private System.Windows.Forms.TextBox WeHitThemAmount;
+        private System.Windows.Forms.TextBox WeShotTotal;
 
         #endregion
     }
