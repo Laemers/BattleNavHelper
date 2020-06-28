@@ -150,6 +150,5 @@ namespace BattleNavHelper
                 Convert.ToString(shot_them), Convert.ToString(Math.Round(100 * hit_them / shot_them, 0)));
             Clipboard.SetText(msg);
         }
-
     }
 }
