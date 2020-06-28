@@ -32,8 +32,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Create GitHub release
       uses: Roang-zero1/github-upload-release-artifacts-action@master
-       args:
-      - dist/bin/
-      - dist/shell/compiled.sh
+      with:
+        args:
+          'dist'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
