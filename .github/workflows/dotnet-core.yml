@@ -18,6 +18,6 @@ jobs:
     - name: Restore Package
       run: nuget restore BattleNavHelper.sln 
     - name: Setup MSBuild.exe
-      run: warrenbuckley/Setup-MSBuild@v1
+      uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
       run: msbuild BattleNavHelper.sln -p:Configuration:Release
