@@ -151,14 +151,5 @@ namespace BattleNavHelper
             Clipboard.SetText(msg);
         }
 
-        private void RockMe_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void RockThem_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
