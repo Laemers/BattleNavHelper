@@ -4,7 +4,7 @@ namespace BattleNavHelper
 {
     public class Ship
     {
-        public static readonly Ship SLOOP = new Ship("Sloop", "Small", 6, 5, 4);
+        public static readonly Ship SLOOP = new Ship("Sloop", "Small", 6, 4, 3);
         public static readonly Ship CUTTER = new Ship("Cutter", "Small", 7.5, 5, 3.75);
         public static readonly Ship DHOW = new Ship("Dhow", "Medium", 7.5, 5, 3.75);
         public static readonly Ship FANCHUAN = new Ship("Fanchuan", "Large", 7.875, 5.225, 3.9375);
