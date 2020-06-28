@@ -21,3 +21,16 @@ jobs:
       uses: microsoft/Setup-MSBuild@v1
     - name: Build with MSBuild
       run: msbuild BattleNavHelper.sln
+  release:
+    runs-on: windows-latest
+    needs: [build]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create release
+      uses: Roang-zero1/github-create-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create GitHub release
+      uses: Roang-zero1/github-upload-release-artifacts-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
