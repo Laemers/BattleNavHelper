@@ -20,4 +20,4 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild BattleNavHelper.sln -p:Configuration:Release
+      run: msbuild BattleNavHelper.sln
