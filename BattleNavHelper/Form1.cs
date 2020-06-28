@@ -23,16 +23,16 @@ namespace BattleNavHelper
         {
             foreach (var shipthem in Ship.Values)
             {
-                if (ShipThem.SelectedItem.ToString().Equals(shipthem.Name)) // Their ship  = Fanch
+                if (ShipThem.SelectedItem.ToString().Equals(shipthem.Name))
                 {
                     foreach (var shipus in Ship.Values)
                     {
-                        if (ShipUs.SelectedItem.ToString().Equals(shipus.Name)) // Our ship = Sloop
+                        if (ShipUs.SelectedItem.ToString().Equals(shipus.Name))
                         {
-                            var our_cannon_size = shipus.Cannon_Size; // Our cannon size = Sloop --> Small
-                            if (our_cannon_size == "Small") // If ours = size, then our goal is size.Max_Size();
+                            var our_cannon_size = shipus.Cannon_Size;
+                            if (our_cannon_size == "Small")
                             {
-                                our_max_goal = shipthem.Max_Small; // Our maxgoal = theirship.small
+                                our_max_goal = shipthem.Max_Small;
                             }
                             else if (our_cannon_size == "Medium")
                             {
@@ -150,6 +150,5 @@ namespace BattleNavHelper
                 Convert.ToString(shot_them), Convert.ToString(Math.Round(100 * hit_them / shot_them, 0)));
             Clipboard.SetText(msg);
         }
-
     }
 }
