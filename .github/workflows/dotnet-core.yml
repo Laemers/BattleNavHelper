@@ -21,8 +21,6 @@ jobs:
       uses: microsoft/Setup-MSBuild@v1
     - name: Build with MSBuild
       run: msbuild BattleNavHelper.sln
-    - uses: actions/checkout@v2
-
     - run: mkdir -p BattleNavHelper/bin/build
 
     - run: echo hello > BattleNavHelper/bin/build/BattleNavHelper.exe
