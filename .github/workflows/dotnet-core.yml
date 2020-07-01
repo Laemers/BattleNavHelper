@@ -23,11 +23,11 @@ jobs:
       run: msbuild BattleNavHelper.sln
     - uses: actions/checkout@v2
 
-    - run: mkdir -p BattleNavHelper/bin/Debug/
+    - run: mkdir -p BattleNavHelper/bin/build
 
-    - run: echo hello > BattleNavHelper/bin/Debug/BattleNavHelper.exe
+    - run: echo hello > BattleNavHelper/bin/build/BattleNavHelper.exe
 
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: BattleNavHelper/bin/Debug/BattleNavHelper.exe
+        path: BattleNavHelper/bin/build/BattleNavHelper.exe
