@@ -21,11 +21,8 @@ jobs:
       uses: microsoft/Setup-MSBuild@v1
     - name: Build with MSBuild
       run: msbuild BattleNavHelper.sln
-    - run: mkdir -p BattleNavHelper/bin/build
-
-    - run: echo hello > BattleNavHelper/bin/build/BattleNavHelper.exe
-
-    - uses: actions/upload-artifact@v2
+    - run: mkdir staging && cp target/*.exe staging
+    - uses: actions/upload-artifact@v1
       with:
-        name: my-artifact
-        path: BattleNavHelper/bin/build/BattleNavHelper.exe
+        name: Package
+        path: staging
