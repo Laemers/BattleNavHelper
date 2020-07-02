@@ -31,3 +31,38 @@ jobs:
         artifacts: BattleNavHelper/bin/Debug/*.exe
         bodyFile: "body.md"
         token: ${{ secrets.GITHUB_TOKEN }}
+  get_tag:
+    name: Get release tag
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.output_tag.outputs.tag }}
+    steps:
+      - name: Get existing tag from github.ref
+        if: ${{ contains(github.ref, 'refs/tags/') }}
+        run: echo "::set-env name=tag::${GITHUB_REF#refs/tags/}"
+
+      - name: Generate number
+        id: generate_number
+        if: ${{ contains(github.ref, 'refs/heads/') }}
+        uses: travisj/build-number-action@v1
+
+      - name: Generate new tag
+        if: ${{ contains(github.ref, 'refs/heads/') }}
+        run: echo "::set-env name=tag::v1.${{ steps.generate_number.outputs.build-number }}"
+
+      - name: Set output
+        id: output_tag
+        run: echo "::set-output name=tag::${{ env.tag }}"
+  release:
+   runs-on: windows-latest
+   needs: [build, get_tag]
+   steps:
+     - uses: actions/checkout@v2
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       with:
+        tag_name: ${{ needs.get_tag.outputs.release_tag }}
+        release_name: Release ${{ needs.get_tag.outputs.release_tag }}
+        body: "yes"
