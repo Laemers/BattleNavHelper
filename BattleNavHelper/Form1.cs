@@ -21,57 +21,27 @@ namespace BattleNavHelper
 
         private void setFields()
         {
-            foreach (var shipthem in Ship.Values)
-            {
-                if (ShipThem.SelectedItem.ToString().Equals(shipthem.Name)) // Their ship  = Fanch
-                {
-                    foreach (var shipus in Ship.Values)
-                    {
-                        if (ShipUs.SelectedItem.ToString().Equals(shipus.Name)) // Our ship = Sloop
-                        {
-                            var our_cannon_size = shipus.Cannon_Size; // Our cannon size = Sloop --> Small
-                            if (our_cannon_size == "Small") // If ours = size, then our goal is size.Max_Size();
-                            {
-                                our_max_goal = shipthem.Max_Small; // Our maxgoal = theirship.small
-                            }
-                            else if (our_cannon_size == "Medium")
-                            {
-                                our_max_goal = shipthem.Max_Medium;
-                            }
-                            else if (our_cannon_size == "Large")
-                            {
-                                our_max_goal = shipthem.Max_Large;
-                            }
-                        }
-                    }
-                }
+            var shipUs = ShipComparator(ShipUs);
+            var shipThem = ShipComparator(ShipThem);
 
-                foreach (var shipus in Ship.Values)
-                {
-                    if (ShipUs.SelectedItem.ToString().Equals(shipus.Name))
-                    {
-                        foreach (var shipthem1 in Ship.Values)
-                        {
-                            if (ShipThem.SelectedItem.ToString().Equals(shipthem1.Name))
-                            {
-                                var their_cannon_size = shipthem1.Cannon_Size;
-                                if (their_cannon_size == "Small")
-                                {
-                                    their_max_goal = shipus.Max_Small;
-                                }
-                                else if (their_cannon_size == "Medium")
-                                {
-                                    their_max_goal = shipus.Max_Medium;
-                                }
-                                else if (their_cannon_size == "Large")
-                                {
-                                    their_max_goal = shipus.Max_Large;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            var ourCannonSize = shipUs.Cannon_Size; // Our cannon size = Sloop --> Small
+            our_max_goal = ourCannonSize switch
+            {
+                // If ours = size, then our goal is size.Max_Size();
+                "Small" => shipThem.Max_Small,
+                "Medium" => shipThem.Max_Medium,
+                "Large" => shipThem.Max_Large,
+                _ => our_max_goal
+            };
+
+            var theirCannonSize = shipThem.Cannon_Size;
+            their_max_goal = theirCannonSize switch
+            {
+                "Small" => shipUs.Max_Small,
+                "Medium" => shipUs.Max_Medium,
+                "Large" => shipUs.Max_Large,
+                _ => their_max_goal
+            };
 
             TheyHitUsAmount.Text = Convert.ToString(hit_them);
             TheyShotTotal.Text = Convert.ToString(shot_them);
@@ -79,9 +49,24 @@ namespace BattleNavHelper
             WeHitThemAmount.Text = Convert.ToString(hit_me);
             WeShotTotal.Text = Convert.ToString(shot_me);
             OurMaxGoal.Text = Convert.ToString(our_max_goal);
-            PercentageHit.Text = Convert.ToString(Math.Round((hit_me * 100 / shot_me), 2));
+            PercentageHit.Text = Convert.ToString(Math.Round(hit_me * 100 / shot_me, 2));
         }
 
+        private static Ship ShipComparator(ComboBox shipComboBox)
+        {
+            Ship ship = null;
+            foreach (var shipFromEnum in Ship.Values)
+            {
+                if (shipComboBox.SelectedItem.ToString().Equals(shipFromEnum.Name))
+                {
+                    ship = shipFromEnum;
+                }
+            }
+
+            return ship;
+        }
+
+        
         private void resetGame()
         {
             hit_me = 0;
