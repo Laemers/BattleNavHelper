@@ -26,11 +26,6 @@ jobs:
       with:
         name: Package
         path: staging
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: BattleNavHelper/bin/Debug/*.exe
-        bodyFile: "body.md"
-        token: ${{ secrets.GITHUB_TOKEN }}
   get_tag:
     name: Get release tag
     needs: build
