@@ -64,7 +64,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ needs.get_tag.outputs.release_tag }}
-          release_name: Release ${{ needs.get_tag.outputs.release_tag }}:  
+          release_name: Release ${{ needs.get_tag.outputs.release_tag }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
