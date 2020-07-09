@@ -9,7 +9,6 @@ on:
 jobs:
   get_tag:
     name: Get release tag
-    needs: build
     runs-on: ubuntu-latest
     outputs:
       release_tag: ${{ steps.output_tag.outputs.tag }}
