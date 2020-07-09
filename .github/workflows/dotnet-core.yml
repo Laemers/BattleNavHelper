@@ -7,25 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
-    - name: Restore Package
-      run: nuget restore BattleNavHelper.sln
-    - name: Setup MSBuild.exe
-      uses: microsoft/Setup-MSBuild@v1
-    - name: Build with MSBuild
-      run: msbuild BattleNavHelper.sln
-    - run: mkdir staging && cp BattleNavHelper/bin/Debug/*.exe staging
-    - uses: actions/upload-artifact@v1
-      with:
-        name: Package
-        path: staging
-        
   get_tag:
     name: Get release tag
     needs: build
@@ -49,31 +30,43 @@ jobs:
       - name: Set output
         id: output_tag
         run: echo "::set-output name=tag::${{ env.tag }}"
-        
-  release:
-    name: Upload Release Asset
-    needs: [build, get_tag]
-    runs-on: ubuntu-latest
+   
+  build:
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ needs.get_tag.outputs.release_tag }}
-          release_name: Release ${{ needs.get_tag.outputs.release_tag }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./Package.zip
-          asset_name: Package.zip
-          asset_content_type: application/zip
+    - uses: actions/checkout@v2
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: Restore Package
+      run: nuget restore BattleNavHelper.sln
+    - name: Setup MSBuild.exe
+      uses: microsoft/Setup-MSBuild@v1
+    - name: Build with MSBuild
+      run: msbuild BattleNavHelper.sln
+    - run: mkdir staging && cp BattleNavHelper/bin/Debug/*.exe staging
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Package
+        path: staging
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ needs.get_tag.outputs.release_tag }}
+        release_name: Release ${{ needs.get_tag.outputs.release_tag }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: BattleNavHelper/bin/Debug/
+        asset_name: Package.exe
+        asset_content_type: application/zip
