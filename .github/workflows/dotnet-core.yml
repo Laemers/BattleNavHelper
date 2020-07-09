@@ -32,6 +32,7 @@ jobs:
         run: echo "::set-output name=tag::${{ env.tag }}"
    
   build:
+    needs: [get_tag]
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
